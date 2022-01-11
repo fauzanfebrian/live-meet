@@ -1,0 +1,9 @@
+<script src="/js/main.js"></script>
+<%if(errorMessage || successMessage){%> 
+<script>
+    showMessage("<%=errorMessage || successMessage%>", "<%=errorMessage ? 'error': null%>")
+</script>
+<%}%>
+</body>
+
+</html>

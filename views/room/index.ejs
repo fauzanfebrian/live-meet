@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/rooms.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% if (rooms.length > 0) { %>
+                <ul class="room-list">
+                    <% rooms.forEach(room => { %>
+                        <li class="room">
+                            <h1><%= room.roomName %></h1>
+                            <h2>Max capacity: <%= room.size %></h2>
+                            <a href="/room/<%= room._id %>" class="btn">Enter Room</a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <h1>No Room Found</h1>
+            <% } %>
+        </main>
+        <%- include('../includes/end.ejs') %>

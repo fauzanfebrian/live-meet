@@ -1,0 +1,50 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+    <%- include('includes/navigation.ejs') %>
+    <main>
+        <form class="login-form" action="/room/enter-room" method="POST">
+            <h1 style="margin-bottom: 30px; text-align: center;">Join Exist Room</h1>
+            <div class="form-control">
+                <label for="roomName">Room Name</label>
+                <input 
+                    type="text" 
+                    name="roomName" 
+                    id="roomName">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password">
+            </div>
+            <%- include('./includes/csrf-input.ejs') %>
+            <button class="btn" type="submit">Enter</button>
+            <hr>
+            <br>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <a class="btn" type="button" href="/room/anonym-room">Create anonymous room</a>
+                <%if(isAuthenticated){%>
+                    <%if(userRoom){%>
+                        <a href="/room/edit-room/<%=userRoom%>" 
+                            style="display: inline-block; margin-top: 8px;">
+                            Edit my room
+                        </a>
+                    <%}else{%>
+                        <a href="/room/create-room" 
+                            style="display: inline-block; margin-top: 8px;">
+                            Create your own room
+                        </a>
+                    <%}%>
+                <%}%>
+            </div>
+        </form>
+    </main>
+    <script>
+        var _0x228fea=_0x5d25;function _0x40ee(){var _0xf80a83=['9228MrTcZs','18pRBYZF','#password','9893650QFEepS','10sniMXF','19366620jvoGfL','3Nxgvxi','target','replace','8YWsXUa','11nDEnlg','464031uwZkmL','48kmJdyo','value','querySelector','input','addEventListener','4412952XtgnXm','6004201VuGBlR','1904215cTfrzX'];_0x40ee=function(){return _0xf80a83;};return _0x40ee();}function _0x5d25(_0x318485,_0x214e5e){var _0x40eebb=_0x40ee();return _0x5d25=function(_0x5d252d,_0xc76c86){_0x5d252d=_0x5d252d-0xd7;var _0x39f600=_0x40eebb[_0x5d252d];return _0x39f600;},_0x5d25(_0x318485,_0x214e5e);}(function(_0x26fd65,_0x4b9959){var _0xfc99=_0x5d25,_0x3ade61=_0x26fd65();while(!![]){try{var _0x5d6d3c=parseInt(_0xfc99(0xd7))/0x1*(parseInt(_0xfc99(0xdf))/0x2)+parseInt(_0xfc99(0xe5))/0x3*(parseInt(_0xfc99(0xdc))/0x4)+-parseInt(_0xfc99(0xde))/0x5*(-parseInt(_0xfc99(0xe0))/0x6)+-parseInt(_0xfc99(0xdd))/0x7*(-parseInt(_0xfc99(0xe8))/0x8)+-parseInt(_0xfc99(0xea))/0x9*(parseInt(_0xfc99(0xe3))/0xa)+parseInt(_0xfc99(0xe9))/0xb*(-parseInt(_0xfc99(0xe4))/0xc)+-parseInt(_0xfc99(0xe2))/0xd;if(_0x5d6d3c===_0x4b9959)break;else _0x3ade61['push'](_0x3ade61['shift']());}catch(_0x35086b){_0x3ade61['push'](_0x3ade61['shift']());}}}(_0x40ee,0xdb5b8),document[_0x228fea(0xd9)]('#roomName')[_0x228fea(0xdb)](_0x228fea(0xda),_0x57db4e=>{var _0x42a536=_0x228fea;_0x57db4e['target'][_0x42a536(0xd8)]=_0x57db4e[_0x42a536(0xe6)][_0x42a536(0xd8)][_0x42a536(0xe7)](/[^a-z0-9-_!@#$%&*()+=?/><:;,.\\'"\[\] ]/gi,'');}),document[_0x228fea(0xd9)](_0x228fea(0xe1))[_0x228fea(0xdb)](_0x228fea(0xda),_0x3c99bd=>{var _0x30b8af=_0x228fea;_0x3c99bd['target'][_0x30b8af(0xd8)]=_0x3c99bd['target']['value'][_0x30b8af(0xe7)](/[^a-z0-9]/gi,'');}));
+    </script>
+<%- include('includes/end.ejs') %>

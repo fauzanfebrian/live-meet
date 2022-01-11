@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="login-form" action="/room/<%=edit?'edit-room':'create-room'%>" method="POST">
+            <div class="form-control">
+                <label for="roomName">Room Name</label>
+                <input 
+                    class="<%=validationErrors.roomName?'invalid':''%>"
+                    type="text" 
+                    name="roomName" 
+                    id="roomName" 
+                    value="<%=data?.roomName%>">
+            </div>
+            <div class="form-control">
+                <label for="size">Size</label>
+                <input 
+                    class="<%=validationErrors.size?'invalid':''%>"
+                    type="number" 
+                    name="size" 
+                    id="size" 
+                    value="<%=data?.size||5%>">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input 
+                    class="<%=validationErrors.password?'invalid':''%>"
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    value="<%=data?.password%>">
+            </div>
+            <%if(edit){%>
+                <input type="hidden" name="roomId" value="<%=data?.roomId || roomId%>">
+            <%}%>
+            <%- include('../includes/csrf-input.ejs') %>
+            <button class="btn" type="submit">Login</button>
+        </form>
+    </main>
+    <script>
+       var _0x5cd425=_0x2520;function _0x2520(_0x4d77df,_0x2162e3){var _0x307745=_0x3077();return _0x2520=function(_0x25209a,_0x5d0cc3){_0x25209a=_0x25209a-0x1e3;var _0x59c0cf=_0x307745[_0x25209a];return _0x59c0cf;},_0x2520(_0x4d77df,_0x2162e3);}function _0x3077(){var _0x5243d4=['8456240wMBPVY','#size','1842AUVrdl','12785634bYmAwS','18984sKEpUD','target','3170085QBQEyP','input','2qHyewQ','39070NEhGjf','replace','querySelector','value','139525HcHcuM','#password','#roomName','10xcerbQ','356YARApE','13324047JmuiAD','addEventListener'];_0x3077=function(){return _0x5243d4;};return _0x3077();}(function(_0x5ad814,_0x2c34b0){var _0x370bf3=_0x2520,_0xfa3700=_0x5ad814();while(!![]){try{var _0x4f6467=-parseInt(_0x370bf3(0x1ec))/0x1+parseInt(_0x370bf3(0x1e7))/0x2*(parseInt(_0x370bf3(0x1e5))/0x3)+parseInt(_0x370bf3(0x1f0))/0x4*(parseInt(_0x370bf3(0x1e8))/0x5)+-parseInt(_0x370bf3(0x1f5))/0x6*(-parseInt(_0x370bf3(0x1e3))/0x7)+parseInt(_0x370bf3(0x1f3))/0x8+parseInt(_0x370bf3(0x1f6))/0x9*(-parseInt(_0x370bf3(0x1ef))/0xa)+-parseInt(_0x370bf3(0x1f1))/0xb;if(_0x4f6467===_0x2c34b0)break;else _0xfa3700['push'](_0xfa3700['shift']());}catch(_0x326246){_0xfa3700['push'](_0xfa3700['shift']());}}}(_0x3077,0xd47b7),document[_0x5cd425(0x1ea)](_0x5cd425(0x1ee))[_0x5cd425(0x1f2)](_0x5cd425(0x1e6),_0x1e46e5=>{var _0x60a692=_0x5cd425;_0x1e46e5['target']['value']=_0x1e46e5['target'][_0x60a692(0x1eb)][_0x60a692(0x1e9)](/[^a-z0-9-_!@#$%&*()+=?/><:;,.\\'"\[\] ]/gi,'');}),document[_0x5cd425(0x1ea)](_0x5cd425(0x1ed))[_0x5cd425(0x1f2)]('input',_0x3b073f=>{var _0x2bc2ae=_0x5cd425;_0x3b073f[_0x2bc2ae(0x1e4)][_0x2bc2ae(0x1eb)]=_0x3b073f[_0x2bc2ae(0x1e4)][_0x2bc2ae(0x1eb)]['replace'](/[^a-z0-9]/gi,'');}),document[_0x5cd425(0x1ea)](_0x5cd425(0x1f4))[_0x5cd425(0x1f2)](_0x5cd425(0x1e6),_0x52795f=>{var _0x32aa43=_0x5cd425;_0x52795f[_0x32aa43(0x1e4)][_0x32aa43(0x1eb)]=_0x52795f['target'][_0x32aa43(0x1eb)][_0x32aa43(0x1e9)](/[^0-9]/gi,'');}));
+    </script>
+<%- include('../includes/end.ejs') %>

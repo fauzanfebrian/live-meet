@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Room</title>
+    <link rel="stylesheet" href="/css/room.css" />
+    <script>
+      const ROOM_ID = "<%=roomId%>";
+      const ISAUTHOR = !"<%=author?'true':''%>" ? false : true
+    </script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script
+      src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"
+      defer
+    ></script>
+    <script
+      src="https://webrtc.github.io/adapter/adapter-latest.js"
+      defer
+    ></script>
+    <script src="/js/iceservers.js" defer></script>
+    <script src="/js/room.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1 class="welcome">HELLO DEAR</h1>
+      <section id="video-grid"></section>
+      <section id="messages" class="sidebar closed">
+        <div class="header-messages">
+          <button class="toggle"><</button>
+          <h1>Messages</h1>
+        </div>
+        <div class="messages-content"></div>
+        <div class="input-message">
+          <input type="text" />
+          <button>send</button>
+        </div>
+      </section>
+      <%if(author) {%>
+      <section id="controller" class="sidebar closed">
+        <div class="header-messages">
+          <button class="toggle"><</button>
+          <h1>Setting</h1>
+        </div>
+        <div class="content">
+          <div>
+            <label for="mute-all">Mute all</label>
+            <input type="checkbox" id="mute-all" />
+          </div>
+          <button id="share-screen">Share Schreen</button>
+        </div>
+      </section>
+      <%}%>
+      <div class="toggle-wrapper">
+        <button class="toggle message">Messages</button>
+        <%if(author) {%><button class="toggle setting">⚙️ ></button><%}%>
+      </div>
+    </main>
+    <%if(author) {%><script src="/js/author-room.js"></script></button><%}%>
+  </body>
+</html>
