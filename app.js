@@ -34,10 +34,6 @@ app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) =>
-  res.redirect("https://" + req.headers.host + req.url)
-);
-
 app.use((req, res, next) => (dbErr ? next(new Error(dbErr)) : next()));
 app.use(
   session({
@@ -49,6 +45,12 @@ app.use(
   })
 );
 app.use(csrf, flash(), setLocals);
+
+app.get((req, res, next) =>
+  req.protocol === "https"
+    ? next()
+    : res.redirect("https://" + req.headers.host + req.url)
+);
 
 app.use("/room", roomRoutes);
 app.use(authRoutes);
