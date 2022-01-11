@@ -35,9 +35,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) =>
-  req.protocol === "https"
-    ? next()
-    : res.redirect("https://" + req.headers.host + req.url)
+  res.redirect("https://" + req.headers.host + req.url)
 );
 
 app.use((req, res, next) => (dbErr ? next(new Error(dbErr)) : next()));
