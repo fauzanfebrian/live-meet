@@ -4,8 +4,7 @@ const { Server } = require("socket.io");
 const session = require("express-session");
 const flash = require("connect-flash");
 
-const MONGODB_URI =
-  "mongodb+srv://fauzanfebriann:lahat123@cluster0.whp9l.mongodb.net/live-meet?retryWrites=true&w=majority";
+const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.whp9l.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`;
 
 const app = express();
 const MongoDBStore = require("connect-mongodb-session")(session);
